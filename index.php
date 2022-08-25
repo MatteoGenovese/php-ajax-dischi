@@ -16,46 +16,46 @@
 </head>
 
 <body>
+    <?php
+        include __DIR__ . '/db.php';
+    ?>
 
     <header>
-        <img src="../imgs/spotify.png" alt="spotify-logo">
+        <img src="./imgs/spotify.png" alt="spotify-logo">
 
     </header>
     <main>
         <section>
 
             <div class="container">
-
                 <label for="genre">Choose genre:</label>
                 <select name="genre" id="genre" v-model="inputSelect" @change="$emit('search', inputSelect)">
-                    <option v-for="(genre,index) in genreList" :key="index" :value="genre">{{genre}}</option>
+                    <?php foreach ($genres as $key => $genre) {
+                    ?>
+                        <option value="<?php echo $genre; ?>"><?php echo $genre; ?></option>
+                    <?php  }; ?>
                 </select>
-
-                <!-- v-for="(genre,index) in genreList"
-  :key="index"
-  :genre="genre" -->
             </div>
-
-
 
             <div class="container d-flex flex-wrap p-5 card-container">
-
-                
+                <?php foreach ($discs as $key => $disc) {
+                    # code...
+                ?>
                     <div class="card">
                         <div class="img-container">
-                            <img :src="card.poster" alt="">
+                            <img src="<?php echo $disc['poster']; ?>" alt="">
                         </div>
-                        <h2>{{card.title}}</h2>
+                        <h2><?php echo $disc['title']; ?> </h2>
                         <h3>
-                            {{card.author}}
+                            <?php echo $disc['author']; ?>
                             <br>
-                            {{card.year}}
+                            <?php echo $disc['year']; ?>
                         </h3>
                     </div>
+                <?php   } ?>
             </div>
-
-
         </section>
+
     </main>
 
     </div>
