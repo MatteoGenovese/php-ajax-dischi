@@ -1,10 +1,5 @@
 <?php
-$genres = [
-        "Rock",
-        "Pop",
-        "Jazz",
-        "Metal",
-    ];
+
 
     $discs = [
         [

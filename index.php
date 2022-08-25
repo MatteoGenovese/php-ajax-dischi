@@ -17,46 +17,50 @@
 
 <body>
     <?php
-        include __DIR__ . '/db.php';
+
+
+    $genres = [
+        "Rock",
+        "Pop",
+        "Jazz",
+        "Metal",
+    ];
     ?>
 
-    <header>
-        <img src="./imgs/spotify.png" alt="spotify-logo">
+    <div id="app">
+        <header>
+            <img src="./imgs/spotify.png" alt="spotify-logo">
 
-    </header>
-    <main>
-        <section>
+        </header>
+        <main>
+            <section>
 
-            <div class="container">
-                <label for="genre">Choose genre:</label>
-                <select name="genre" id="genre" v-model="inputSelect" @change="$emit('search', inputSelect)">
-                    <?php foreach ($genres as $key => $genre) {
-                    ?>
-                        <option value="<?php echo $genre; ?>"><?php echo $genre; ?></option>
-                    <?php  }; ?>
-                </select>
-            </div>
+                <div class="container">
+                    <label for="genre">Choose genre:</label>
+                    <select name="genre" id="genre" v-model="inputSelect" @change="$emit('search', inputSelect)">
+                        <?php foreach ($genres as $key => $genre) {
+                        ?>
+                            <option value="<?php echo $genre; ?>"><?php echo $genre; ?></option>
+                        <?php  }; ?>
+                    </select>
+                </div>
 
-            <div class="container d-flex flex-wrap p-5 card-container">
-                <?php foreach ($discs as $key => $disc) {
-                    # code...
-                ?>
-                    <div class="card">
-                        <div class="img-container">
-                            <img src="<?php echo $disc['poster']; ?>" alt="">
+                <div class="container d-flex flex-wrap p-5 card-container">
+                        <div class="card" v-for="disc in discs">
+                            <div class="img-container">
+                                <img :src="disc.poster" alt="">
+                            </div>
+                            <h2>{{disc.title}}</h2>
+                            <h3>
+                                {{disc.author}}
+                                <br>
+                                {{disc.year}}
+                            </h3>
                         </div>
-                        <h2><?php echo $disc['title']; ?> </h2>
-                        <h3>
-                            <?php echo $disc['author']; ?>
-                            <br>
-                            <?php echo $disc['year']; ?>
-                        </h3>
-                    </div>
-                <?php   } ?>
-            </div>
-        </section>
+                </div>
+            </section>
 
-    </main>
+        </main>
 
     </div>
     <script src="./scripts/script.js"></script>
