@@ -12,13 +12,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js" integrity="sha512-odNmoc1XJy5x1TMVMdC7EMs3IVdItLPlCeL5vSUPN2llYKMJ2eByTTAIiiuqLg+GdNr9hF6z81p27DArRFKT7A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- Vue -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="../styles/style.css">
 </head>
 
 <body>
     <?php
-
-
     $genres = [
         "Rock",
         "Pop",
@@ -29,7 +27,7 @@
 
     <div id="app">
         <header>
-            <img src="./imgs/spotify.png" alt="spotify-logo">
+            <img src="../imgs/spotify.png" alt="spotify-logo">
 
         </header>
         <main>
@@ -37,33 +35,31 @@
 
                 <div class="container">
                     <label for="genre">Choose genre:</label>
-                    <select name="genre" id="genre" v-model="inputSelect" @change="$emit('search', inputSelect)">
-                        <?php foreach ($genres as $key => $genre) {
-                        ?>
-                            <option value="<?php echo $genre; ?>"><?php echo $genre; ?></option>
-                        <?php  }; ?>
+                    <select name="genre" id="genre" @change="searchAlbum()">
+                        <option v-for="(genre,index) in genreList" :key="index" :value="genre">{{genre}}
+                        </option>
                     </select>
                 </div>
 
                 <div class="container d-flex flex-wrap p-5 card-container">
-                        <div class="card" v-for="disc in discs">
-                            <div class="img-container">
-                                <img :src="disc.poster" alt="">
-                            </div>
-                            <h2>{{disc.title}}</h2>
-                            <h3>
-                                {{disc.author}}
-                                <br>
-                                {{disc.year}}
-                            </h3>
+                    <div class="card" v-for="card in cardsFiltered">
+                        <div class="img-container">
+                            <img :src="card.poster" alt="">
                         </div>
+                        <h2>{{card.title}}</h2>
+                        <h3>
+                            {{card.author}}
+                            <br>
+                            {{card.year}}
+                        </h3>
+                    </div>
                 </div>
             </section>
 
         </main>
 
     </div>
-    <script src="./scripts/script.js"></script>
+    <script src="../scripts/script.js"></script>
 
 </body>
 
