@@ -5,12 +5,12 @@
 }
 
 main {
-    height: 90vh;
+    height: calc( 100vh - 60px);
     background: #1E2C3B;
 }
 
 header {
-    height: 10vh;
+    height: 60px;
     background: #2E3A46;
 }
 

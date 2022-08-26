@@ -16,14 +16,6 @@
 </head>
 
 <body>
-    <?php
-    $genres = [
-        "Rock",
-        "Pop",
-        "Jazz",
-        "Metal",
-    ];
-    ?>
 
     <div id="app">
         <header>
@@ -34,7 +26,7 @@
             <section>
 
                 <div class="container">
-                    <label for="genre">Choose genre:</label>
+                    <label for="genre">Choose the genre:</label>
                     <select name="genre" id="genre" @change="searchAlbum()">
                         <option v-for="(genre,index) in genreList" :key="index" :value="genre">{{genre}}
                         </option>
@@ -42,7 +34,7 @@
                 </div>
 
                 <div class="container d-flex flex-wrap p-5 card-container">
-                    <div class="card" v-for="card in cardsFiltered">
+                    <div class="card" v-for="card in cards">
                         <div class="img-container">
                             <img :src="card.poster" alt="">
                         </div>
@@ -55,7 +47,6 @@
                     </div>
                 </div>
             </section>
-
         </main>
 
     </div>
