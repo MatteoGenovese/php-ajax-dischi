@@ -5,37 +5,34 @@ const app = new Vue({
         cards: [],
         cardsFiltered: [],
         genreList: [],
+        selectedGenre: "all",
 
     },
     methods: {
-        getCards: function() {
-            axios.get('../controller/controller.php')
+        getCards: function(genre = "") {
+            axios.get('../controller/controller.php' + genre)
                 .then((response) => {
-                    console.log(response.data);
-                    this.cards = response.data;
+                    this.cards = response.data.data;
+                    console.log(response.data.data);
+                    if (this.dataStoraged == false) {
+                        this.searchGenreToDisplay();
+                    }
                     this.dataStoraged = true;
-                    this.searchGenreToDisplay();
                 })
                 .catch((error) => {
                     console.warn(error);
                 });
         },
         searchGenreToDisplay: function() {
-            this.genreList.push('All')
-            this.cards.forEach(element => {
-                if (!(this.genreList.includes(element.genre)))
-                    this.genreList.push(element.genre)
+            this.genreList.push('all')
+            this.cards.forEach(card => {
+                if (!(this.genreList.includes(card.genre.toLowerCase())))
+                    this.genreList.push(card.genre.toLowerCase());
             });
-            // console.log(this.genreList);
+            console.log(this.genreList);
         },
-        searchAlbum: function(needle) {
-            // if (needle == 'All') {
-            //     this.cardsFiltered = [...this.cards]
-            // } else {
-            //     this.cardsFiltered = this.cards.filter((element) => {
-            //         return element.genre == needle
-            //     });
-            // }
+        selectGenre: function(genre) {
+            this.getCards('?genre=' + genre);
         },
 
     },

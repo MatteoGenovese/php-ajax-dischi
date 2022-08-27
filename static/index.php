@@ -27,8 +27,9 @@
 
                 <div class="container">
                     <label for="genre">Choose the genre:</label>
-                    <select name="genre" id="genre" @change="searchAlbum()">
-                        <option v-for="(genre,index) in genreList" :key="index" :value="genre">{{genre}}
+                    <select v-model="selectedMusicGenre" name="genreSelect" id="genreSelect" @change="selectGenre(selectedMusicGenre)">
+                        <option v-for="(genre,index) in genreList" :key="index" :value="genre.toLowerCase()">
+                            {{genre.substring(0,1).toUpperCase() + genre.substring(1) }}
                         </option>
                     </select>
                 </div>
