@@ -6,16 +6,20 @@
 
 main {
     height: 100%;
-    background: #1E2C3B;
+    background-color: #1E2C3B;
 }
 
 header {
     height: 60px;
-    background: #2E3A46;
+    background-color: #2E3A46;
 }
 
 header img {
     height: 90%;
+}
+
+body {
+    background-color: #2E3A46;
 }
 
 
