@@ -28,7 +28,7 @@ const app = new Vue({
             });
             console.log(this.genreList);
         },
-        selectGenre: function(genre) {
+        getCardsAfterClickGenreSelect: function(genre) {
             this.getCards('?genre=' + genre);
         },
 

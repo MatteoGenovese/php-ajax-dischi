@@ -27,7 +27,7 @@
 
                 <div class="container">
                     <label for="genre">Choose the genre:</label>
-                    <select v-model="selectedMusicGenre" name="genreSelect" id="genreSelect" @change="selectGenre(selectedMusicGenre)">
+                    <select v-model="selectedMusicGenre" name="genreSelect" id="genreSelect" @change="getCardsAfterClickGenreSelect(selectedMusicGenre)">
                         <option value="all genres" selected>All genres</option>
                         <option v-for="(genre,index) in genreList" :key="index" :value="genre.toLowerCase()">
                             {{genre.substring(0,1).toUpperCase() + genre.substring(1) }}
