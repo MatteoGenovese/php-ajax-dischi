@@ -9,8 +9,8 @@ $answer = [
     "data" => [],
 ];
 
-
-if (!empty($_GET) && !empty($_GET['genre']) && $_GET['genre']!='all') {
+// ! espongo un API in base ai parametri Get ricevuti
+if (!empty($_GET) && !empty($_GET['genre']) && $_GET['genre']!='all genres') {
     // ? quando chiedo un genere
     // memorizzo il genere richiesto tramite chiamata get
     $genre = $_GET['genre'];
@@ -21,8 +21,8 @@ if (!empty($_GET) && !empty($_GET['genre']) && $_GET['genre']!='all') {
         // se il disco appartiene al genere musicale richiesto
         if ($genre == $currentDiscGenre){
             // allora lo inserisco nei data di $answer
-            $answer['data'][] = $disc;
             $answer['result'] = true;
+            $answer['data'][] = $disc;
         }
     }
 }else {
