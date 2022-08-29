@@ -1,13 +1,17 @@
 const app = new Vue({
+
     el: '#app',
+
     data: {
         cards: [],
         cardsFiltered: [],
         genreList: [],
         selectedMusicGenre: "all genres",
-
     },
+
+
     methods: {
+
         getCards: function(genre = "") {
             axios.get('../controller/controller.php' + genre)
                 .then((response) => {
@@ -28,11 +32,14 @@ const app = new Vue({
             });
             console.log(this.genreList);
         },
-        getCardsAfterClickGenreSelect: function(genre) {
+
+        getCardsAfterGenreSelectClick: function(genre) {
             this.getCards('?genre=' + genre);
         },
 
     },
+
+
     created: function() {
         this.getCards();
     }

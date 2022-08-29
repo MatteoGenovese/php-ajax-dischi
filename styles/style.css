@@ -25,20 +25,26 @@ body {
 
 /* genre selection */
 
-label {
+#genre-select-container {
     color: white;
     padding-top: 1rem;
 }
 
-.card-container {
+#music-card-container {
     row-gap: 14px;
     gap: 15px;
 }
 
+select#genre-select {
+    margin-left: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+}
 
-/* card */
 
-.card {
+/* music-card */
+
+.music-card {
     height: 335px;
     padding: 10px;
     width: calc( ( 100% / 5) - 15px);
@@ -48,25 +54,25 @@ label {
     align-items: center;
 }
 
-.card .img-container {
+.music-card .img-container {
     width: 155px;
     height: 155px;
     overflow: hidden;
     text-align: center;
 }
 
-.card .img-container img {
+.music-card .img-container img {
     height: 100%;
     object-fit: cover;
 }
 
-.card h2 {
+.music-card h2 {
     font-size: 1.5rem;
     color: white;
     text-align: center;
 }
 
-.card h3 {
+.music-card h3 {
     color: #797D77;
     font-size: 1rem;
     text-align: center;

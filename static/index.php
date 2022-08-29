@@ -18,16 +18,18 @@
 <body>
 
     <div id="app">
+
         <header>
             <img src="../imgs/spotify.png" alt="spotify-logo">
-
         </header>
+
+
         <main>
             <section>
 
-                <div class="container">
-                    <label for="genre">Choose the genre:</label>
-                    <select v-model="selectedMusicGenre" name="genreSelect" id="genreSelect" @change="getCardsAfterClickGenreSelect(selectedMusicGenre)">
+                <div id="genre-select-container" class="container">
+                    <label for="genre">Choose the music genre: </label>
+                    <select v-model="selectedMusicGenre" name="genreSelect" id="genre-select" @change="getCardsAfterGenreSelectClick(selectedMusicGenre)">
                         <option value="all genres" selected>All genres</option>
                         <option v-for="(genre,index) in genreList" :key="index" :value="genre.toLowerCase()">
                             {{genre.substring(0,1).toUpperCase() + genre.substring(1) }}
@@ -35,8 +37,8 @@
                     </select>
                 </div>
 
-                <div class="container d-flex flex-wrap p-5 card-container">
-                    <div class="card" v-for="card in cards">
+                <div id="music-card-container" class="container d-flex flex-wrap p-5">
+                    <div class="music-card" v-for="card in cards">
                         <div class="img-container">
                             <img :src="card.poster" alt="">
                         </div>
@@ -48,12 +50,13 @@
                         </h3>
                     </div>
                 </div>
+
             </section>
         </main>
 
     </div>
-    <script src="../scripts/script.js"></script>
 
+    <script src="../scripts/script.js"></script>
 </body>
 
 </html>
