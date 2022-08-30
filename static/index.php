@@ -28,7 +28,7 @@
             <section>
 
                 <div id="genre-select-container" class="container">
-                    <label for="genre">Choose the music genre: </label>
+                    <label for="genreSelect">Choose the music genre: </label>
                     <select v-model="selectedMusicGenre" name="genreSelect" id="genre-select" @change="getCardsAfterGenreSelectClick(selectedMusicGenre)">
                         <option value="all genres" selected>All genres</option>
                         <option v-for="(genre,index) in genreList" :key="index" :value="genre.toLowerCase()">

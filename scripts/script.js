@@ -12,8 +12,8 @@ const app = new Vue({
 
     methods: {
 
-        getCards: function(genre = "") {
-            axios.get('../controller/controller.php' + genre)
+        getCards: function(selectedMusicGenre = "") {
+            axios.get('../controller/controller.php', { params: { genre: selectedMusicGenre } })
                 .then((response) => {
                     this.cards = response.data.data;
                     console.log(response.data.data);
@@ -33,8 +33,8 @@ const app = new Vue({
             console.log(this.genreList);
         },
 
-        getCardsAfterGenreSelectClick: function(genre) {
-            this.getCards('?genre=' + genre);
+        getCardsAfterGenreSelectClick: function(selectedMusicGenre) {
+            this.getCards(selectedMusicGenre);
         },
 
     },
